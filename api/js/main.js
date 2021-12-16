@@ -1,4 +1,4 @@
-import "./style.css";
+import "../styles/style.css";
 async function getData() {
   try {
     const result = await fetch(
