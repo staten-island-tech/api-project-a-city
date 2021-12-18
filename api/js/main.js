@@ -1,13 +1,19 @@
-import "../styles/style.css";
-async function getData() {
-  try {
-    const result = await fetch(
-      `https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?RGAPI-cca58d06-1eea-4731-9f87-3f7d66a5e17c`
-    );
-    const data = await result.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-getData();
+import("../styles/style.css");
+import { DOMSelectors } from "./dom";
+
+DOMSelectors.enterButton.addEventListener("click", function () {
+	const summoner = DOMSelectors.summonerName.nodeValue;
+
+	async function getData() {
+		try {
+			const result = await fetch(
+				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-27802d5b-fe40-4aca-a225-ef3488b4b40a`
+			);
+			const data = await result.json();
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	getData();
+});
