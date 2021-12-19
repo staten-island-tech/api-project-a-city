@@ -4,16 +4,15 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite App</title>
+		<title>Better.gg</title>
 	</head>
 	<body>
 		<h1 class="header">Your League Stats</h1>
-		<h3 class="form">Summoner Name:</h3>
 		<div class="form">
-			<form class="form" id="form" onsubmit="return false">
-				<input id="summonerName" type="text" />
+			<form id="form">
+				<input id="summonerName" type="text" placeholder="Summoner Name" />
+				<button id="enterButton">Enter</button>
 			</form>
-			<button id="enterButton">Enter</button>
 		</div>
 		<script type="module" src="./js/main.js"></script>
 	</body>

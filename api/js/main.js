@@ -1,33 +1,33 @@
 import("../styles/style.css");
 import { DOMSelectors } from "./dom";
 
-DOMSelectors.form.addEventListener("submit", function () {
+DOMSelectors.form.addEventListener("submit", function (e) {
+	e.preventDefault();
 	const summoner = DOMSelectors.summonerName.value;
-	console.log(summoner);
 
 	async function getPuuid() {
 		try {
-			const result = await fetch(
+			const apiPuuid = await fetch(
 				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-56fd4772-91b5-4342-b0ed-58908a603076`
 			);
-			const data = await result.json();
-			const puuid = Object.values(data)[2];
+			const dataPuuid = await apiPuuid.json();
+			const puuid = Object.values(dataPuuid)[2];
 
 			async function getAccount() {
 				try {
-					const results2 = await fetch(
-						`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-56fd4772-91b5-4342-b0ed-58908a603076`
+					const apiAccount = await fetch(
+						`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=2&api_key=RGAPI-56fd4772-91b5-4342-b0ed-58908a603076`
 					);
-					const data2 = await results2.json();
+					const dataAccount = await apiAccount.json();
 
-					data2.forEach((matchID) => {
+					dataAccount.forEach((matchID) => {
 						async function getMatch() {
 							try {
-								const results3 = await fetch(
+								const apiMatch = await fetch(
 									`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-56fd4772-91b5-4342-b0ed-58908a603076`
 								);
-								const data3 = await results3.json();
-								console.log(data3);
+								const dataMatch = await apiMatch.json();
+								console.log(dataMatch);
 							} catch (error) {
 								console.log(error);
 							}
