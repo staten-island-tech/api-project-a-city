@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <h1 class="header">Your League Stats</h1>
-    <h3 class="form">Summoner Name:</h3>
-    <div class="form">
-    <form class="form" id="form"><input id="summonerName" type="text"></form>
-    <button id="enterButton">Enter</button>
-    </div>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Better.gg</title>
+	</head>
+	<body>
+		<h1 class="header">Your League Stats</h1>
+		<div class="form">
+			<form id="form">
+				<input id="summonerName" type="text" placeholder="Summoner Name" />
+				<button id="enterButton">Enter</button>
+			</form>
+		</div>
+		<div class="matchHistory">
+			<div class="matchHistory-info"></div>
+			<div class="matchHistory-stats"></div>
+		</div>
+		<script type="module" src="./js/main.js"></script>
+	</body>
 </html>
