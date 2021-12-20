@@ -6,4 +6,5 @@ export const DOMSelectors = {
 	matchHistory: document.querySelector(".matchHistory"),
 	matchInfo: document.querySelector(".matchHistory-info"),
 	matchStats: document.querySelector(".matchHistory-stats"),
+	loadScreen: document.querySelector(".container"),
 };
