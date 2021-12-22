@@ -1,8 +1,7 @@
 import { DOMSelectors } from "./dom";
+import { grabIcon } from "./loadingScreen";
 
 const matchHistory = JSON.parse(window.localStorage.getItem("matches"));
-const icons = JSON.parse(window.localStorage.getItem("icons"));
-console.log(icons);
 console.log(matchHistory);
 matchHistory.forEach((item) =>
   DOMSelectors.matchHistory.insertAdjacentHTML(
@@ -10,3 +9,4 @@ matchHistory.forEach((item) =>
     `<p>${item.info.gameDuration} seconds</p>`
   )
 );
+grabIcon.insertAdjacentHTML("beforeend", `<image>${grabIcon}</image>`);

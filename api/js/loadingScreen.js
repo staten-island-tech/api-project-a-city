@@ -4,28 +4,25 @@ const summoner = window.localStorage.getItem("searchData");
 async function getPuuid() {
   try {
     const apiPuuid = await fetch(
-      `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-b798a8ea-d5a8-40d4-8236-71a36142908a`
+      `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-70c31577-3dbc-41dd-aab5-ea81e60e6ae0`
     ).then((api) => api.json());
     const puuid = Object.values(apiPuuid)[2];
     const icon = Object.values(apiPuuid)[4];
 
-    async function grabIcon() {
-      const icons = await fetch(
-        `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`
-      ).then((icon = icon.json));
-      window.localStorage.setItem("icons", JSON.stringify(icons, null, 4));
-    }
+    export const grabIcon = {
+      icon: `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`,
+    };
 
     async function getAccount() {
       try {
         const apiAccount = await fetch(
-          `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-b798a8ea-d5a8-40d4-8236-71a36142908a`
+          `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-70c31577-3dbc-41dd-aab5-ea81e60e6ae0`
         ).then((api) => api.json());
 
         let apiMatches = [];
         for (const matchID of apiAccount) {
           const apiMatch = await fetch(
-            `https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-b798a8ea-d5a8-40d4-8236-71a36142908a`
+            `https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-70c31577-3dbc-41dd-aab5-ea81e60e6ae0`
           ).then((api) => api.json());
           console.log(apiMatch);
           apiMatches.push(apiMatch);
@@ -41,7 +38,6 @@ async function getPuuid() {
       }
     }
     getAccount();
-    grabIcon();
   } catch (error) {
     console.log(error);
   }
