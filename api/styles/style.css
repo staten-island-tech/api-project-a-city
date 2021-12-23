@@ -1,26 +1,101 @@
-html,
-body,
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-size: 62.5%;
+@import url(./variable.css);
+
+body {
+	background: var(--main-bg-color);
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 4rem;
+	font-size: 10rem;
+	justify-content: center;
+	height: 80vh;
 }
 
 .header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 10rem;
+	display: block;
+	width: 100vw;
+	font-size: 15rem;
+	text-align: center;
+	font-weight: 900;
+	margin-bottom: 10rem;
 }
-.form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 10rem;
+
+#summonerName {
+	text-align: center;
+	outline: none;
+	padding: 3.5rem;
+	width: 130rem;
+	border: none;
+	border-radius: 1rem;
+	background-color: var(--search-box-color);
+	font-weight: 500;
+	color: rgb(58, 58, 58);
 }
-button {
-	margin: 0.5rem;
+
+#enterButton {
+	border: none;
+	border-radius: 1rem;
+	padding: 3rem;
+	font-size: 4rem;
+	width: 25rem;
+	font-weight: 700;
+	letter-spacing: 0.25rem;
+	color: white;
+	background: linear-gradient(135deg, #2b69ee, #9246ee);
+}
+
+#enterButton:active {
+	transform: scale(0.9, 0.9);
+}
+
+#retryButton {
+	justify-content: center;
+	border: none;
+	border-radius: 1rem;
+	padding: 3rem;
+	font-size: 4rem;
+	width: 35rem;
+	font-weight: 700;
+	letter-spacing: 0.25rem;
+	color: white;
+	background: linear-gradient(135deg, #2b69ee, #9246ee);
+	margin-top: 8rem;
+}
+
+#retryButton:active {
+	transform: scale(0.9, 0.9);
+}
+
+.error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	row-gap: 4rem;
+}
+
+.errorMessage {
+	background-color: var(--error-message-color);
+	color: rgb(255, 251, 251);
+	width: 80vw;
+	padding: 6rem;
+	font-size: 10rem;
+	text-align: center;
+	border-radius: 1rem;
+	font-weight: 500;
+}
+
+.errorMessage2 {
+	display: block;
+	width: 100vw;
+	font-size: 4rem;
+	text-align: center;
+	font-weight: 400;
+	color: #74767c;
 }
 
 .title {
@@ -41,15 +116,12 @@ button {
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-button {
-  margin: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

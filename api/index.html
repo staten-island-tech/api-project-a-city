@@ -7,17 +7,17 @@
 		<title>Better.gg</title>
 	</head>
 	<body>
-		<h1 class="header">Your League Stats</h1>
-		<div class="form">
-			<form id="form">
-				<input id="summonerName" type="text" placeholder="Summoner Name" />
-				<button id="enterButton">Enter</button>
-			</form>
-		</div>
-		<div class="matchHistory">
-			<div class="matchHistory-info"></div>
-			<div class="matchHistory-stats"></div>
-		</div>
+		<form class="form" id="form">
+			<h1 class="header">BETTER.GG</h1>
+			<input
+				id="summonerName"
+				type="text"
+				placeholder="Enter Summoner Name"
+				spellcheck="false"
+				required
+			/>
+			<button formnovalidate id="enterButton">Search</button>
+		</form>
 		<script type="module" src="./js/main.js"></script>
 	</body>
 </html>
