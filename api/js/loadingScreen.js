@@ -16,6 +16,7 @@ async function getPuuid() {
 
 		const grabIcon = `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
 		window.localStorage.setItem("icon", grabIcon);
+
 		async function getAccount() {
 			try {
 				const apiAccount = await fetch(
@@ -43,6 +44,7 @@ async function getPuuid() {
 		getAccount();
 	} catch (error) {
 		console.log(error);
+		window.location.href = "./error.html";
 	}
 }
 getPuuid();

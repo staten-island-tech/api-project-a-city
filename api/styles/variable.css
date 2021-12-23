@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@700&display=swap");
+
+html,
+body,
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 62.5%;
+
+	font-family: "Roboto", sans-serif;
+}
+
+:root {
+	--main-bg-color: rgba(249, 251, 255, 01);
+	--search-box-color: #d7d9df;
+}
