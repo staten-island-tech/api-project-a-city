@@ -1,0 +1,17 @@
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  color: var(--text-color);
+  font-family: var(--main-font);
+}
+
+.player {
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -70,3 +70,17 @@ body,
 	font-size: 3rem;
 	flex-direction: column;
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  margin: 0.5rem;
+}

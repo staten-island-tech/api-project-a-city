@@ -1,29 +1,31 @@
 import("../styles/load.css");
 
 const summoner = window.localStorage.getItem("searchData");
-
 async function getPuuid() {
 	try {
-		const getIgn = await fetch(
-			`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-0d966c91-f3e4-4aa6-bd27-00b3d8c2861b`
-		);
-		const apiPuuid = await getIgn.json();
-
+		const apiPuuid = await fetch(
+			`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
+		).then((api) => api.json());
 		const puuid = Object.values(apiPuuid)[2];
 		const icon = Object.values(apiPuuid)[4];
+		const level = Object.values(apiPuuid)[6];
+		const name = Object.values(apiPuuid)[3];
 
-		window.localStorage.setItem("icon", icon);
+		window.localStorage.setItem("level", level);
+		window.localStorage.setItem("name", name);
 
+		const grabIcon = `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
+		window.localStorage.setItem("icon", grabIcon);
 		async function getAccount() {
 			try {
 				const apiAccount = await fetch(
-					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-0d966c91-f3e4-4aa6-bd27-00b3d8c2861b`
+					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
 				).then((api) => api.json());
 
 				let apiMatches = [];
 				for (const matchID of apiAccount) {
 					const apiMatch = await fetch(
-						`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-0d966c91-f3e4-4aa6-bd27-00b3d8c2861b`
+						`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
 					).then((api) => api.json());
 					console.log(apiMatch);
 					apiMatches.push(apiMatch);
@@ -40,8 +42,6 @@ async function getPuuid() {
 		}
 		getAccount();
 	} catch (error) {
-		//window.location.href = "./error.html";
-		console.log("Not valid summonor name");
 		console.log(error);
 	}
 }
