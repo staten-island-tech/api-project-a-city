@@ -13,5 +13,6 @@ body,
 
 :root {
 	--main-bg-color: rgba(249, 251, 255, 01);
-	--search-box-color: #d7d9df;
+	--search-box-color: #e3e5e9;
+	--error-message-color: #ff5148;
 }
