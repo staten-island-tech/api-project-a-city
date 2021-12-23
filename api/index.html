@@ -8,12 +8,15 @@
 	</head>
 	<body>
 		<h1 class="header">Your League Stats</h1>
-		<div class="form">
-			<form id="form">
-				<input id="summonerName" type="text" placeholder="Summoner Name" />
-				<button id="enterButton">Enter</button>
-			</form>
-		</div>
+		<form class="form" id="form">
+			<input
+				id="summonerName"
+				type="text"
+				placeholder="Summoner Name"
+				required
+			/>
+			<button formnovalidate id="enterButton">Search</button>
+		</form>
 		<script type="module" src="./js/main.js"></script>
 	</body>
 </html>
