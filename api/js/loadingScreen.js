@@ -8,9 +8,13 @@ async function getPuuid() {
     ).then((api) => api.json());
     const puuid = Object.values(apiPuuid)[2];
     const icon = Object.values(apiPuuid)[4];
+    const level = Object.values(apiPuuid)[6];
+    const name = Object.values(apiPuuid)[3];
 
-    const grabIcon = 
-    `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
+    window.localStorage.setItem("level", level);
+    window.localStorage.setItem("name", name);
+
+    const grabIcon = `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
     window.localStorage.setItem("icon", grabIcon);
     async function getAccount() {
       try {
