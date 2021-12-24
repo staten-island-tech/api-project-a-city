@@ -97,31 +97,3 @@ body {
 	font-weight: 400;
 	color: #74767c;
 }
-
-.title {
-	justify-content: center;
-	align-content: center;
-	align-items: center;
-	height: 30rem;
-	font-size: 3rem;
-}
-
-.matchHistory {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 30rem;
-	font-size: 3rem;
-	flex-direction: column;
-}
-
-.header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}

@@ -1,21 +1,23 @@
 import { DOMSelectors } from "./dom";
 import("../styles/matchHistory.css");
 
-const matchHistory = JSON.parse(window.localStorage.getItem("matches"));
+const match = JSON.parse(window.localStorage.getItem("matches"));
+console.log(match);
 
 const picture = window.localStorage.getItem("icon");
 const level = window.localStorage.getItem("level");
 const name = window.localStorage.getItem("name");
 
-DOMSelectors.matchHistory.insertAdjacentHTML(
-	"beforeend",
-	`<image src="${picture}" class="player"></image>
-	<h2 class="player">Summoner Name: ${name}</h2>
-	<h2 class="player">Champion Level: ${level}</h2>
-	<h2>Match Duration (in seconds):</h2>`
+DOMSelectors.summonerInfo.insertAdjacentHTML(
+	"afterbegin",
+	`<image src="${picture}" class="profile"></image>
+	<div class="summonerInfoText">
+	<h2 class="profile">${name}</h2>
+	<h2 class="profile">Level ${level}</h2>
+	</div>`
 );
 
-matchHistory.forEach((item) =>
+match.forEach((item) =>
 	DOMSelectors.matchHistory.insertAdjacentHTML(
 		"beforeend",
 		`<p>${item.info.gameDuration} seconds</p>`
