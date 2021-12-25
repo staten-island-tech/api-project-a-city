@@ -20,7 +20,7 @@ async function getPuuid() {
 		async function getAccount() {
 			try {
 				const apiAccount = await fetch(
-					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-8406d85c-8ac9-4560-a25a-bc22de262651`
+					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=25&api_key=RGAPI-8406d85c-8ac9-4560-a25a-bc22de262651`
 				).then((api) => api.json());
 
 				let apiMatches = [];
@@ -44,7 +44,7 @@ async function getPuuid() {
 		getAccount();
 	} catch (error) {
 		console.log(error);
-		//window.location.href = "./error.html";
+		window.location.href = "./error.html";
 	}
 }
 getPuuid();

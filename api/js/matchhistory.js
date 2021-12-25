@@ -1,4 +1,5 @@
 import { DOMSelectors } from "./dom";
+import { insert_match } from "./function";
 import("../styles/matchHistory.css");
 
 const match = JSON.parse(window.localStorage.getItem("matches"));
@@ -20,14 +21,14 @@ console.log(match);
 
 match.forEach(function (item) {
 	const info = item.info;
-	const metaData = item.info.participants.filter(
+	const metaData = info.participants.filter(
 		(summoner) => summoner.summonerName === name
 	)[0];
 	console.log(info);
 	console.log(metaData);
 
-	/* DOMSelectors.matchHistory.insertAdjacentHTML(
+	DOMSelectors.matchHistory.insertAdjacentHTML(
 		"beforeend",
-		`<p>${item.info.gameDuration} seconds</p>`
-	); */
+		insert_match(info, metaData)
+	);
 });
