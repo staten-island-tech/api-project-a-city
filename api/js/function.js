@@ -32,12 +32,17 @@ function insert_img(items) {
 
 function insert_combos(combos) {
 	let inner = "";
-	let combo_names = ["Double kill", "Triple kill", "Quadrakill", "Pentakill"];
-	combos.forEach(function (combo, index) {
-		if (combo != 0) {
-			inner += `<p class="matchHistoryDataSetBotCombosKillsType"> ${combo_names[index]}</p>`;
-		}
-	});
+
+	if (combos[3] != 0) {
+		inner += `<p class="matchHistoryDataSetBotCombosKillsType">Pentakill</p>`;
+	} else if (combos[2] != 0) {
+		inner += `<p class="matchHistoryDataSetBotCombosKillsType">Quadrakill</p>`;
+	} else if (combos[1] != 0) {
+		inner += `<p class="matchHistoryDataSetBotCombosKillsType">Triplekill</p>`;
+	} else if (combos[0] != 0) {
+		inner += `<p class="matchHistoryDataSetBotCombosKillsType">Doublekill</p>`;
+	}
+
 	return inner;
 }
 
@@ -53,11 +58,16 @@ function insert_match(info, metaData) {
     </div>
     <div class="matchHistoryDataSetMid">
         <div class="matchHistoryDataSetMidChamp">
-            <img
+            <div><img
                 class="champIcon"
                 src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${metaData.championName}.png"
                 alt=""
             />
+			<div>
+			
+			</div>
+			</div>
+			
             <p>Level ${metaData.champLevel}</p>
         </div>
         <div class="matchHistoryDataSetMidStats">
