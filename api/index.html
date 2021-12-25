@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="../styles/style.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Better.gg</title>
+	</head>
+	<body>
+		<form class="form" id="form">
+			<h1 class="header">BETTER.GG</h1>
+			<input
+				id="summonerName"
+				type="text"
+				placeholder="Enter Summoner Name"
+				spellcheck="false"
+				required
+			/>
+			<button formnovalidate id="enterButton">Search</button>
+		</form>
+		<script type="module" src="./js/main.js"></script>
+	</body>
 </html>

@@ -1,6 +1,12 @@
-import './style.css'
+import("../styles/search.css");
+import { DOMSelectors } from "./dom";
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+DOMSelectors.form.addEventListener("submit", function (e) {
+	e.preventDefault();
+	const summoner = DOMSelectors.summonerName.value.replace(/\s/g, "");
+	if (summoner === "") {
+	} else {
+		localStorage.setItem("searchData", summoner);
+		window.location.href = "./html/loadingScreen.html";
+	}
+});
