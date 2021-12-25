@@ -17,18 +17,11 @@ DOMSelectors.summonerInfo.insertAdjacentHTML(
 	</div>`
 );
 
-console.log(match);
-
 match.forEach(function (item) {
 	const info = item.info;
-	const metaData = info.participants.filter(
-		(summoner) => summoner.summonerName === name
-	)[0];
-	console.log(info);
+	const metaData = info.participants.filter((summoner) => summoner.summonerName === name)[0];
+
 	console.log(metaData);
 
-	DOMSelectors.matchHistory.insertAdjacentHTML(
-		"beforeend",
-		insert_match(info, metaData)
-	);
+	DOMSelectors.matchHistory.insertAdjacentHTML("beforeend", insert_match(info, metaData));
 });

@@ -24,7 +24,7 @@ function insert_img(items) {
 	let inner = "";
 	items.forEach(function (item) {
 		if (item != 0) {
-			inner += `<img class="img2" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${item}.png">`;
+			inner += `<img class="items" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${item}.png">`;
 		}
 	});
 	return inner;
@@ -35,28 +35,16 @@ function insert_combos(combos) {
 	let combo_names = ["Double kill", "Triple kill", "Quadrakill", "Pentakill"];
 	combos.forEach(function (combo, index) {
 		if (combo != 0) {
-			inner += `<p> ${combo_names[index]}</p>`;
+			inner += `<p class="matchHistoryDataSetBotCombosKillsType"> ${combo_names[index]}</p>`;
 		}
 	});
 	return inner;
 }
 
 function insert_match(info, metaData) {
-	const items = [
-		metaData.item0,
-		metaData.item1,
-		metaData.item2,
-		metaData.item3,
-		metaData.item4,
-		metaData.item5,
-		metaData.item6,
-	];
-	const combos = [
-		metaData.doubleKills,
-		metaData.tripleKills,
-		metaData.quadraKills,
-		metaData.pentaKills,
-	];
+	const items = [metaData.item0, metaData.item1, metaData.item2, metaData.item3, metaData.item4, metaData.item5];
+
+	const combos = [metaData.doubleKills, metaData.tripleKills, metaData.quadraKills, metaData.pentaKills];
 
 	return `<div class="matchHistory-data ${metaData.win}">
     <div class="matchHistoryDataSetTop">
@@ -64,15 +52,13 @@ function insert_match(info, metaData) {
         <p>${fancyTimeFormat(info.gameDuration)}</p>
     </div>
     <div class="matchHistoryDataSetMid">
-        <div>
+        <div class="matchHistoryDataSetMidChamp">
             <img
-                class="img"
-                src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${
-									metaData.championName
-								}.png"
+                class="champIcon"
+                src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${metaData.championName}.png"
                 alt=""
             />
-            <p>level ${metaData.champLevel}</p>
+            <p>Level ${metaData.champLevel}</p>
         </div>
         <div class="matchHistoryDataSetMidStats">
             <div>
@@ -81,28 +67,27 @@ function insert_match(info, metaData) {
             <div>
                 <div class="matchHistoryDataSetMidStatsCs">
                     <p>${metaData.totalMinionsKilled} cs</p>
-                    <p>${(
-											metaData.totalMinionsKilled /
-											(info.gameDuration / 60)
-										).toFixed(1)} cs/min</p>
+                    <p>${(metaData.totalMinionsKilled / (info.gameDuration / 60)).toFixed(1)} cs/min</p>
                 </div>
             </div>
         </div>
-        <div>
+        <div class="matchHistoryDataSetMidInv">
             <div class="matchHistoryDataSetMidItems">
                 ${insert_img(items)}
             </div>
+			<div>
+				<img class="items" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${metaData.item6}.png">
+			</div>
         </div>
     </div>
-    <div class="matchHistoryDataSetBot">
+    <div>
         <div class="matchHistoryDataSetBotCombos">
-            ${insert_combos(combos)}
+            <div class="matchHistoryDataSetBotCombosKills">${insert_combos(combos)}</div>
+			<div class="timeSpentDead">
+            	<p>Time Dead: ${fancyTimeFormat(metaData.totalTimeSpentDead)} <p>
         </div>
-        <div class="timeSpentDead">
-            <p>time spent dead : ${fancyTimeFormat(
-							metaData.totalTimeSpentDead
-						)}</p>
         </div>
+        
     </div>
 </div>`;
 }
