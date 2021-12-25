@@ -4,7 +4,7 @@ const summoner = window.localStorage.getItem("searchData");
 async function getPuuid() {
 	try {
 		const apiPuuid = await fetch(
-			`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
+			`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=RGAPI-8406d85c-8ac9-4560-a25a-bc22de262651`
 		).then((api) => api.json());
 		const puuid = Object.values(apiPuuid)[2];
 		const icon = Object.values(apiPuuid)[4];
@@ -20,13 +20,13 @@ async function getPuuid() {
 		async function getAccount() {
 			try {
 				const apiAccount = await fetch(
-					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
+					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-8406d85c-8ac9-4560-a25a-bc22de262651`
 				).then((api) => api.json());
 
 				let apiMatches = [];
 				for (const matchID of apiAccount) {
 					const apiMatch = await fetch(
-						`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-c64a2867-0270-43a8-a835-67e05261bc8f`
+						`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=RGAPI-8406d85c-8ac9-4560-a25a-bc22de262651`
 					).then((api) => api.json());
 					console.log(apiMatch);
 					apiMatches.push(apiMatch);
@@ -44,7 +44,7 @@ async function getPuuid() {
 		getAccount();
 	} catch (error) {
 		console.log(error);
-		window.location.href = "./error.html";
+		//window.location.href = "./error.html";
 	}
 }
 getPuuid();
