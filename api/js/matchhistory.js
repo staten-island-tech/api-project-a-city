@@ -2,7 +2,6 @@ import { DOMSelectors } from "./dom";
 import("../styles/matchHistory.css");
 
 const match = JSON.parse(window.localStorage.getItem("matches"));
-console.log(match);
 
 const picture = window.localStorage.getItem("icon");
 const level = window.localStorage.getItem("level");
@@ -17,9 +16,18 @@ DOMSelectors.summonerInfo.insertAdjacentHTML(
 	</div>`
 );
 
-match.forEach((item) =>
-	DOMSelectors.matchHistory.insertAdjacentHTML(
+console.log(match);
+
+match.forEach(function (item) {
+	const info = item.info;
+	const metaData = item.info.participants.filter(
+		(summoner) => summoner.summonerName === name
+	)[0];
+	console.log(info);
+	console.log(metaData);
+
+	/* DOMSelectors.matchHistory.insertAdjacentHTML(
 		"beforeend",
 		`<p>${item.info.gameDuration} seconds</p>`
-	)
-);
+	); */
+});

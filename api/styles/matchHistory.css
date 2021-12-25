@@ -16,9 +16,9 @@
 	align-items: center;
 	justify-content: center;
 	margin: 5rem;
-	margin-left: 25vw;
-	margin-right: 25vw;
-	width: 50vw;
+	margin-left: 30vw;
+	margin-right: 30vw;
+	width: 40vw;
 	border-radius: 1rem;
 	background: linear-gradient(135deg, #2b69ee, #9246ee);
 }
@@ -52,4 +52,63 @@ img.profile {
 	align-items: center;
 	font-size: 3rem;
 	flex-direction: column;
+}
+
+.matchHistory-data {
+	display: flex;
+	flex-direction: column;
+	width: 40vw;
+	font-size: 10rem;
+	border-radius: 1rem;
+	background-color: #2b69ee;
+}
+
+.img {
+	width: 10rem;
+}
+
+.img2 {
+	width: 5rem;
+}
+
+.matchHistoryDataSetTop {
+	display: flex;
+	flex-direction: row;
+	column-gap: 2rem;
+}
+
+.matchHistoryDataSetMid {
+	display: flex;
+	flex-direction: row;
+	column-gap: 5rem;
+	justify-content: space-between;
+}
+
+.matchHistoryDataSetMidStats {
+	display: flex;
+	flex-direction: column;
+	row-gap: 3rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.matchHistoryDataSetMidStatsCs {
+	display: flex;
+	column-gap: 2rem;
+}
+
+.matchHistoryDataSetMidItems {
+	display: flex;
+	flex-wrap: wrap;
+	width: 15rem;
+}
+
+.matchHistoryDataSetBot {
+	display: flex;
+	column-gap: 4rem;
+}
+
+.matchHistoryDataSetBotCombos {
+	display: flex;
+	column-gap: 1rem;
 }

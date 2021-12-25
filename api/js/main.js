@@ -1,4 +1,4 @@
-import("../styles/style.css");
+import("../styles/search.css");
 import { DOMSelectors } from "./dom";
 
 DOMSelectors.form.addEventListener("submit", function (e) {
