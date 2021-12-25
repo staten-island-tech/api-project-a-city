@@ -58,13 +58,17 @@ function insert_match(info, metaData) {
     </div>
     <div class="matchHistoryDataSetMid">
         <div class="matchHistoryDataSetMidChamp">
-            <div><img
-                class="champIcon"
-                src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${metaData.championName}.png"
-                alt=""
-            />
+            <div class="matchHistoryDataSetMidChampImg">
+				<img class="champIcon" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${metaData.championName}.png" />
+				<div class="matchHistoryDataSetMidChampImgSpells">
+					<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/SummonerBoost.png" />
+					<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/SummonerBoost.png" />
+				</div>
+				<div class="matchHistoryDataSetMidChampImgRunes">
+					<img class="runesImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/SummonerBoost.png" />
+					<img class="runesImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/SummonerBoost.png" />
+				</div>
 			<div>
-			
 			</div>
 			</div>
 			
