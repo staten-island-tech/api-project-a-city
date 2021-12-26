@@ -159,6 +159,7 @@ match.forEach(function (item) {
 			);
 
 			let runes = document.getElementById(info.gameId);
+
 			getRune1().then(function (rune1) {
 				runes.insertAdjacentHTML("beforeend", `<img class="runesImg" src="https://ddragon.canisback.com/img/${rune1}" />`);
 			});
