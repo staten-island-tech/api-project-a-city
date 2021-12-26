@@ -20,7 +20,7 @@ async function getPuuid() {
 		async function getAccount() {
 			try {
 				const apiAccount = await fetch(
-					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=25&api_key=RGAPI-ea07fd1f-ddfc-4538-a971-1df4a679d74b`
+					`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=RGAPI-ea07fd1f-ddfc-4538-a971-1df4a679d74b`
 				).then((api) => api.json());
 
 				let apiMatches = [];
@@ -32,32 +32,42 @@ async function getPuuid() {
 					apiMatches.push(apiMatch);
 				}
 
-				async function getSpell() {
-					const data = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
-						.then((response) => response.json())
-						.then((spell) => Object.values(spell.data));
+				const match = JSON.parse(JSON.stringify(apiMatches, null, 4));
 
-					const findspell1 = data.filter((spell) => spell.key == metaData.summoner1Id);
-					const spell1 = findspell1[0].id;
+				match.forEach(function (item) {
+					const info = item.info;
+					const metaData = info.participants.filter((summoner) => summoner.summonerName === name)[0];
 
-					const findspell2 = data.filter((spell) => spell.key == metaData.summoner2Id);
-					const spell2 = findspell2[0].id;
-				}
+					async function getSpell() {
+						const spellJson = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
+							.then((response) => response.json())
+							.then((spell) => Object.values(spell.data));
 
-				async function getRunes() {
-					const data = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json").then((response) => response.json());
+						const findspell1 = spellJson.filter((spell) => spell.key == metaData.summoner1Id);
+						const spell1 = findspell1[0].id;
+						console.log(spell1);
 
-					const rune1Type = data.filter((rune) => rune.id == metaData.perks.styles[0].style)[0];
-					const filterRune1 = rune1Type.slots[0].runes;
+						const findspell2 = spellJson.filter((spell) => spell.key == metaData.summoner2Id);
+						const spell2 = findspell2[0].id;
+						console.log(spell2);
+					}
+					getSpell();
 
-					const rune2Type = data.filter((rune) => rune.id == metaData.perks.styles[1].style)[0];
-					const filterRune2 = rune2Type.icon;
+					async function getRune() {
+						const runeJson = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json").then((response) => response.json());
 
-					const getRune1 = filterRune1.filter((rune) => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon;
-					console.log(getRune1);
+						const rune1Type = runeJson.filter((rune) => rune.id == metaData.perks.styles[0].style)[0];
+						const filterRune1 = rune1Type.slots[0].runes;
 
-					console.log(filterRune2);
-				}
+						const rune2Type = runeJson.filter((rune) => rune.id == metaData.perks.styles[1].style)[0];
+						const filterRune2 = rune2Type.icon;
+						console.log(filterRune2);
+
+						const getRune1 = filterRune1.filter((rune) => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon;
+						console.log(getRune1);
+					}
+					getRune();
+				});
 
 				console.log("Page LOADED");
 				window.localStorage.setItem("matches", JSON.stringify(apiMatches, null, 4));
@@ -69,7 +79,7 @@ async function getPuuid() {
 		getAccount();
 	} catch (error) {
 		console.log(error);
-		//window.location.href = "./error.html";
+		window.location.href = "./error.html";
 	}
 }
 getPuuid();
