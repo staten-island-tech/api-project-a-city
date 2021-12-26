@@ -2,7 +2,7 @@ import { DOMSelectors } from "./dom";
 import { insert_match } from "./function";
 import("../styles/matchHistory.css");
 
-const match = JSON.parse(window.localStorage.getItem("matches"));
+export const match = JSON.parse(window.localStorage.getItem("matches"));
 
 const picture = window.localStorage.getItem("icon");
 const level = window.localStorage.getItem("level");

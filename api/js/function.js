@@ -46,20 +46,10 @@ function insert_combos(combos) {
 	return inner;
 }
 
-function insert_spells(spell) {}
-function insert_runes(runes) {}
-
 function insert_match(info, metaData) {
 	const items = [metaData.item0, metaData.item1, metaData.item2, metaData.item3, metaData.item4, metaData.item5];
 
 	const combos = [metaData.doubleKills, metaData.tripleKills, metaData.quadraKills, metaData.pentaKills];
-
-	console.log(metaData);
-
-	console.log(metaData.perks.styles[0].style);
-	console.log(metaData.perks.styles[1].style);
-	console.log(metaData.summoner1Id);
-	console.log(metaData.summoner2Id);
 
 	return `<div class="matchHistory-data ${metaData.win}">
     <div class="matchHistoryDataSetTop">
