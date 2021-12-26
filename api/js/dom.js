@@ -8,4 +8,6 @@ export const DOMSelectors = {
 	matchStats: document.querySelector(".matchHistory-stats"),
 	loadScreen: document.querySelector(".container"),
 	summonerInfo: document.querySelector(".summonerInfo"),
+	spells: document.querySelector(".matchHistoryDataSetMidChampImgSpells"),
+	runes: document.querySelector(".matchHistoryDataSetMidChampImgRunes"),
 };
