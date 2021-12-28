@@ -42,7 +42,7 @@ function insert_img(items) {
 	let inner = "";
 	items.forEach(function (item) {
 		if (item != 0) {
-			inner += `<img class="items" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${item}.png">`;
+			inner += `<img class="items" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${item}.png">`;
 		}
 	});
 	return inner;
@@ -72,44 +72,43 @@ match.forEach(function (item, i) {
 
 	console.log(i + " " + metaData.championName);
 
-	function insertMatch() {
-		async function getItems() {
-			let results = [];
+	async function getItems() {
+		let results = [];
 
-			const spell1 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
-				.then(response => response.json())
-				.then(spell => Object.values(spell.data))
-				.then(spell => spell.filter(spell => spell.key == metaData.summoner1Id))
-				.then(spell => spell[0].id);
-			results.splice(0, 0, spell1);
+		const spell1 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
+			.then(response => response.json())
+			.then(spell => Object.values(spell.data))
+			.then(spell => spell.filter(spell => spell.key == metaData.summoner1Id))
+			.then(spell => spell[0].id);
+		results.splice(0, 0, spell1);
 
-			const spell2 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
-				.then(response => response.json())
-				.then(spell => Object.values(spell.data))
-				.then(spell => spell.filter(spell => spell.key == metaData.summoner2Id))
-				.then(spell => spell[0].id);
-			results.splice(1, 0, spell2);
+		const spell2 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
+			.then(response => response.json())
+			.then(spell => Object.values(spell.data))
+			.then(spell => spell.filter(spell => spell.key == metaData.summoner2Id))
+			.then(spell => spell[0].id);
+		results.splice(1, 0, spell2);
 
-			const rune1 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
-				.then(response => response.json())
-				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].style)[0])
-				.then(rune => rune.slots[0].runes)
-				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon);
-			results.splice(2, 0, rune1);
+		const rune1 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
+			.then(response => response.json())
+			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].style)[0])
+			.then(rune => rune.slots[0].runes)
+			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon);
+		results.splice(2, 0, rune1);
 
-			const rune2 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
-				.then(response => response.json())
-				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[1].style)[0])
-				.then(rune => rune.icon);
-			results.splice(3, 0, rune2);
+		const rune2 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
+			.then(response => response.json())
+			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[1].style)[0])
+			.then(rune => rune.icon);
+		results.splice(3, 0, rune2);
 
-			return results;
-		}
+		return results;
+	}
 
-		getItems().then(function (results) {
-			DOMSelectors.matchHistory.insertAdjacentHTML(
-				"beforeend",
-				`<div class="matchHistory-data ${metaData.win}">
+	getItems().then(function (results) {
+		DOMSelectors.matchHistory.insertAdjacentHTML(
+			"beforeend",
+			`<div class="matchHistory-data ${metaData.win}">
 					<div class="matchHistoryDataSetTop">
 						<p>${info.gameMode}</p>
 						<p>${fancyTimeFormat(info.gameDuration)}</p>
@@ -121,8 +120,8 @@ match.forEach(function (item, i) {
 									metaData.championName
 								}.png" />
 								<div class="matchHistoryDataSetMidChampImgSpells">
-										<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[0]}.png" />
-										<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[1]}.png" />
+										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[0]}.png" />
+										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[1]}.png" />
 								</div>
 								<div class="matchHistoryDataSetMidChampImgRunes">
 									<img class="runesImg" src="https://ddragon.canisback.com/img/${results[2]}" />
@@ -147,7 +146,7 @@ match.forEach(function (item, i) {
 								${insert_img(items)}
 							</div>
 							<div>
-								<img class="items" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${metaData.item6}.png">
+								<img class="items" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${metaData.item6}.png">
 							</div>
 						</div>
 					</div>
@@ -160,8 +159,6 @@ match.forEach(function (item, i) {
 						</div>
 					</div>
 				</div>`
-			);
-		});
-	}
-	insertMatch();
+		);
+	});
 });

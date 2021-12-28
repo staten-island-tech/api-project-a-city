@@ -15,7 +15,7 @@ async function getPuuid() {
 		window.localStorage.setItem("level", level);
 		window.localStorage.setItem("name", name);
 
-		const summonerIcon = `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
+		const summonerIcon = `https://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${icon}.png`;
 		window.localStorage.setItem("icon", summonerIcon);
 
 		async function getAccount() {
