@@ -66,7 +66,7 @@ function insert_combos(combos) {
 
 match.forEach(function (item, i) {
 	const info = item.info;
-	const metaData = info.participants.filter((summoner) => summoner.summonerName === name)[0];
+	const metaData = info.participants.filter(summoner => summoner.summonerName === name)[0];
 	const items = [metaData.item0, metaData.item1, metaData.item2, metaData.item3, metaData.item4, metaData.item5];
 	const combos = [metaData.doubleKills, metaData.tripleKills, metaData.quadraKills, metaData.pentaKills];
 
@@ -77,30 +77,30 @@ match.forEach(function (item, i) {
 			let results = [];
 
 			const spell1 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
-				.then((response) => response.json())
-				.then((spell) => Object.values(spell.data))
-				.then((spell) => spell.filter((spell) => spell.key == metaData.summoner1Id))
-				.then((spell) => spell[0].id);
+				.then(response => response.json())
+				.then(spell => Object.values(spell.data))
+				.then(spell => spell.filter(spell => spell.key == metaData.summoner1Id))
+				.then(spell => spell[0].id);
 			results.splice(0, 0, spell1);
 
 			const spell2 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
-				.then((response) => response.json())
-				.then((spell) => Object.values(spell.data))
-				.then((spell) => spell.filter((spell) => spell.key == metaData.summoner2Id))
-				.then((spell) => spell[0].id);
+				.then(response => response.json())
+				.then(spell => Object.values(spell.data))
+				.then(spell => spell.filter(spell => spell.key == metaData.summoner2Id))
+				.then(spell => spell[0].id);
 			results.splice(1, 0, spell2);
 
 			const rune1 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
-				.then((response) => response.json())
-				.then((rune) => rune.filter((rune) => rune.id == metaData.perks.styles[0].style)[0])
-				.then((rune) => rune.slots[0].runes)
-				.then((rune) => rune.filter((rune) => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon);
+				.then(response => response.json())
+				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].style)[0])
+				.then(rune => rune.slots[0].runes)
+				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon);
 			results.splice(2, 0, rune1);
 
 			const rune2 = await fetch("http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
-				.then((response) => response.json())
-				.then((rune) => rune.filter((rune) => rune.id == metaData.perks.styles[1].style)[0])
-				.then((rune) => rune.icon);
+				.then(response => response.json())
+				.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[1].style)[0])
+				.then(rune => rune.icon);
 			results.splice(3, 0, rune2);
 
 			return results;
@@ -117,7 +117,9 @@ match.forEach(function (item, i) {
 					<div class="matchHistoryDataSetMid">
 						<div class="matchHistoryDataSetMidChamp">
 							<div class="matchHistoryDataSetMidChampImg">
-								<img class="champIcon" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${metaData.championName}.png" />
+								<img class="champIcon" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/champion/${
+									metaData.championName
+								}.png" />
 								<div class="matchHistoryDataSetMidChampImgSpells">
 										<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[0]}.png" />
 										<img class="spellsImg" src="http://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[1]}.png" />
