@@ -32,7 +32,10 @@ async function getPuuid() {
 					).then(api => api.json());
 					apiMatches.push(apiMatch);
 				}
-				window.localStorage.setItem("matches", JSON.stringify(apiMatches, null, 4));
+				window.localStorage.setItem(
+					"matches",
+					JSON.stringify(apiMatches, null, 4)
+				);
 
 				window.location.href = "./matchHistory.html";
 			} catch (error) {

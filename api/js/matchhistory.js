@@ -1,5 +1,4 @@
 import { DOMSelectors } from "./dom";
-import("../styles/matchHistory.css");
 
 export const match = JSON.parse(window.localStorage.getItem("matches"));
 
@@ -64,41 +63,85 @@ function insert_combos(combos) {
 	return inner;
 }
 
+let sortedMatches = [];
+
 match.forEach(function (item, i) {
 	const info = item.info;
-	const metaData = info.participants.filter(summoner => summoner.summonerName === name)[0];
-	const items = [metaData.item0, metaData.item1, metaData.item2, metaData.item3, metaData.item4, metaData.item5];
-	const combos = [metaData.doubleKills, metaData.tripleKills, metaData.quadraKills, metaData.pentaKills];
 
-	console.log(i + " " + metaData.championName);
+	const metaData = info.participants.filter(
+		summoner => summoner.summonerName === name
+	)[0];
+	const items = [
+		metaData.item0,
+		metaData.item1,
+		metaData.item2,
+		metaData.item3,
+		metaData.item4,
+		metaData.item5,
+	];
+	const combos = [
+		metaData.doubleKills,
+		metaData.tripleKills,
+		metaData.quadraKills,
+		metaData.pentaKills,
+	];
 
 	async function getItems() {
 		let results = [];
 
-		const spell1 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
+		const spell1 = await fetch(
+			"https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json"
+		)
 			.then(response => response.json())
 			.then(spell => Object.values(spell.data))
-			.then(spell => spell.filter(spell => spell.key == metaData.summoner1Id))
+			.then(spell =>
+				spell.filter(spell => spell.key == metaData.summoner1Id)
+			)
 			.then(spell => spell[0].id);
 		results.splice(0, 0, spell1);
 
-		const spell2 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json")
+		const spell2 = await fetch(
+			"https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/summoner.json"
+		)
 			.then(response => response.json())
 			.then(spell => Object.values(spell.data))
-			.then(spell => spell.filter(spell => spell.key == metaData.summoner2Id))
+			.then(spell =>
+				spell.filter(spell => spell.key == metaData.summoner2Id)
+			)
 			.then(spell => spell[0].id);
 		results.splice(1, 0, spell2);
 
-		const rune1 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
+		const rune1 = await fetch(
+			"https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json"
+		)
 			.then(response => response.json())
-			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].style)[0])
+			.then(
+				rune =>
+					rune.filter(
+						rune => rune.id == metaData.perks.styles[0].style
+					)[0]
+			)
 			.then(rune => rune.slots[0].runes)
-			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[0].selections[0].perk)[0].icon);
+			.then(
+				rune =>
+					rune.filter(
+						rune =>
+							rune.id ==
+							metaData.perks.styles[0].selections[0].perk
+					)[0].icon
+			);
 		results.splice(2, 0, rune1);
 
-		const rune2 = await fetch("https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json")
+		const rune2 = await fetch(
+			"https://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/runesReforged.json"
+		)
 			.then(response => response.json())
-			.then(rune => rune.filter(rune => rune.id == metaData.perks.styles[1].style)[0])
+			.then(
+				rune =>
+					rune.filter(
+						rune => rune.id == metaData.perks.styles[1].style
+					)[0]
+			)
 			.then(rune => rune.icon);
 		results.splice(3, 0, rune2);
 
@@ -106,12 +149,25 @@ match.forEach(function (item, i) {
 	}
 
 	getItems().then(function (results) {
-		DOMSelectors.matchHistory.insertAdjacentHTML(
-			"beforeend",
-			`<div class="matchHistory-data ${metaData.win}">
+		const date = new Date(info.gameEndTimestamp).toLocaleDateString(
+			"en-US"
+		);
+
+		const time = new Date(info.gameEndTimestamp).toLocaleTimeString(
+			"en-US"
+		);
+		const hourMin = time.slice(-0, -6);
+		const suffix = time.slice(-2);
+		const betterTime = `${hourMin} ${suffix}`;
+
+		const mat = {
+			stamp: info.gameEndTimestamp,
+			inner: `<div class="matchHistory-data ${metaData.win}">
 					<div class="matchHistoryDataSetTop">
 						<p>${info.gameMode}</p>
 						<p>${fancyTimeFormat(info.gameDuration)}</p>
+						<p>${date}</p>
+						<p>${betterTime}</p>
 					</div>
 					<div class="matchHistoryDataSetMid">
 						<div class="matchHistoryDataSetMidChamp">
@@ -120,8 +176,12 @@ match.forEach(function (item, i) {
 									metaData.championName
 								}.png" />
 								<div class="matchHistoryDataSetMidChampImgSpells">
-										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[0]}.png" />
-										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${results[1]}.png" />
+										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${
+											results[0]
+										}.png" />
+										<img class="spellsImg" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/spell/${
+											results[1]
+										}.png" />
 								</div>
 								<div class="matchHistoryDataSetMidChampImgRunes">
 									<img class="runesImg" src="https://ddragon.canisback.com/img/${results[2]}" />
@@ -137,7 +197,9 @@ match.forEach(function (item, i) {
 							<div>
 								<div class="matchHistoryDataSetMidStatsCs">
 									<p>${metaData.totalMinionsKilled} cs</p>
-									<p>${(metaData.totalMinionsKilled / (info.gameDuration / 60)).toFixed(1)} cs/min</p>
+									<p>${(metaData.totalMinionsKilled / (info.gameDuration / 60)).toFixed(
+										1
+									)} cs/min</p>
 								</div>
 							</div>
 						</div>
@@ -146,7 +208,9 @@ match.forEach(function (item, i) {
 								${insert_img(items)}
 							</div>
 							<div>
-								<img class="items" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${metaData.item6}.png">
+								<img class="items" src="https://ddragon.leagueoflegends.com/cdn/11.24.1/img/item/${
+									metaData.item6
+								}.png">
 							</div>
 						</div>
 					</div>
@@ -158,7 +222,17 @@ match.forEach(function (item, i) {
 							</div>
 						</div>
 					</div>
-				</div>`
-		);
+				</div>`,
+		};
+
+		DOMSelectors.matchHistory.innerHTML = "";
+		sortedMatches.push(mat);
+		sortedMatches.sort(function (match2, match1) {
+			return match1.stamp - match2.stamp;
+		});
+
+		sortedMatches.forEach(function (i) {
+			DOMSelectors.matchHistory.insertAdjacentHTML("beforeend", i.inner);
+		});
 	});
 });
