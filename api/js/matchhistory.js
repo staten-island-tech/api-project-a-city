@@ -166,8 +166,8 @@ match.forEach(function (item, i) {
 					<div class="matchHistoryDataSetTop">
 						<p>${info.gameMode}</p>
 						<p>${fancyTimeFormat(info.gameDuration)}</p>
-						<p>${date}</p>
-						<p>${betterTime}</p>
+						<p id="date">${date}</p>
+						<p id="time">${betterTime}</p>
 					</div>
 					<div class="matchHistoryDataSetMid">
 						<div class="matchHistoryDataSetMidChamp">
@@ -185,7 +185,7 @@ match.forEach(function (item, i) {
 								</div>
 								<div class="matchHistoryDataSetMidChampImgRunes">
 									<img class="runesImg" src="https://ddragon.canisback.com/img/${results[2]}" />
-									<img class="runesImg" src="https://ddragon.canisback.com/img/${results[3]}" />
+									<img class="runesImg rune2" src="https://ddragon.canisback.com/img/${results[3]}" />
 								</div>
 							</div>
 							<p>Level ${metaData.champLevel}</p>

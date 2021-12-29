@@ -90,8 +90,21 @@ img.profile {
 	column-gap: 2rem;
 	margin-top: 2rem;
 	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 0;
 	font-size: 4rem;
 	font-weight: 700;
+}
+
+#date {
+	margin-left: auto;
+	font-weight: 400;
+	font-size: 2rem;
+}
+
+#time {
+	font-weight: 400;
+	font-size: 2rem;
 }
 
 .matchHistoryDataSetMid {
@@ -101,6 +114,7 @@ img.profile {
 	justify-content: space-between;
 	margin-left: 5%;
 	margin-right: 5%;
+	margin-bottom: 0;
 	font-weight: 300;
 }
 
@@ -127,7 +141,7 @@ img.profile {
 }
 
 .spellsImg {
-	width: 4rem;
+	width: 4.5rem;
 	border-radius: 0.5rem;
 }
 
@@ -140,8 +154,14 @@ img.profile {
 }
 
 .runesImg {
-	width: 4rem;
+	width: 4.5rem;
 	border-radius: 10rem;
+	padding: 0.2rem;
+	background-color: rgba(255, 255, 255, 0.452);
+}
+
+.rune2 {
+	padding: 0.9rem;
 }
 
 .matchHistoryDataSetMidStats {
@@ -183,7 +203,7 @@ img.profile {
 	justify-content: space-around;
 	margin: 2rem;
 	margin-top: 1rem;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .matchHistoryDataSetBotCombosKills {
