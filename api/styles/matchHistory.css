@@ -1,226 +1,278 @@
 @import url(./variable.css);
 
 .header {
-	display: block;
-	width: 100vw;
-	font-size: 10rem;
-	text-align: center;
-	font-weight: 600;
-	margin-top: 5rem;
-	margin-bottom: 5rem;
+  display: block;
+  width: 100vw;
+  font-size: 10rem;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .summonerInfo {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	margin: 5rem;
-	margin-left: 30vw;
-	margin-right: 30vw;
-	width: 40vw;
-	border-radius: 1rem;
-	background: linear-gradient(135deg, #2b69ee, #9246ee);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem;
+  margin-left: 30vw;
+  margin-right: 30vw;
+  width: 40vw;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #2b69ee, #9246ee);
 }
 
 .summonerInfoText {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	row-gap: 1.5rem;
-	color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1.5rem;
+  color: white;
 }
 
 .profile {
-	font-size: 4.5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-weight: 600;
+  font-size: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
 img.profile {
-	border-radius: 1rem;
-	margin: 5rem;
-	width: 15rem;
+  border-radius: 1rem;
+  margin: 5rem;
+  width: 15rem;
 }
 
 .matchHistory {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 3rem;
-	flex-direction: column;
-	margin-bottom: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  flex-direction: column;
+  margin-bottom: 20rem;
 }
 
 .matchHistory-data {
-	margin-bottom: 30px;
-	display: flex;
-	flex-direction: column;
-	width: 40vw;
-	font-size: 10rem;
-	border-radius: 1rem;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  font-size: 10rem;
+  border-radius: 1rem;
 }
 
 .true {
-	background: linear-gradient(135deg, #b5d2f8, #6cb1ff);
+  background: linear-gradient(135deg, #b5d2f8, #6cb1ff);
 }
 
 .false {
-	background: linear-gradient(135deg, #ffb6b6, #ff8686);
+  background: linear-gradient(135deg, #ffb6b6, #ff8686);
 }
 
 .champIcon {
-	width: 10rem;
-	border-radius: 1rem;
-	margin-top: 1rem;
+  width: 10rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
 }
 
 .items {
-	width: 6rem;
-	height: 6rem;
-	border-radius: 1rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1rem;
 }
 
 .matchHistoryDataSetTop {
-	display: flex;
-	flex-direction: row;
-	column-gap: 2rem;
-	margin-top: 2rem;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-bottom: 0;
-	font-size: 4rem;
-	font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+  margin-top: 2rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+  font-size: 4rem;
+  font-weight: 700;
 }
 
 #date {
-	margin-left: auto;
-	font-weight: 400;
-	font-size: 2rem;
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 2rem;
 }
 
 #time {
-	font-weight: 400;
-	font-size: 2rem;
+  font-weight: 400;
+  font-size: 2rem;
 }
 
 .matchHistoryDataSetMid {
-	display: flex;
-	flex-direction: row;
-	column-gap: 3rem;
-	justify-content: space-between;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-bottom: 0;
-	font-weight: 300;
+  display: flex;
+  flex-direction: row;
+  column-gap: 3rem;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+  font-weight: 300;
 }
 
 .matchHistoryDataSetMidChamp {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
 }
 
 .matchHistoryDataSetMidChampImg {
-	display: flex;
-	flex-direction: row;
-	column-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
 }
 
 .matchHistoryDataSetMidChampImgSpells {
-	display: flex;
-	flex-direction: column;
-	margin-top: 1rem;
-	justify-content: center;
-	row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  justify-content: center;
+  row-gap: 0.5rem;
 }
 
 .spellsImg {
-	width: 4.5rem;
-	border-radius: 0.5rem;
+  width: 4.5rem;
+  border-radius: 0.5rem;
 }
 
 .matchHistoryDataSetMidChampImgRunes {
-	display: flex;
-	flex-direction: column;
-	margin-top: 1rem;
-	justify-content: center;
-	row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  justify-content: center;
+  row-gap: 0.5rem;
 }
 
 .runesImg {
-	width: 4.5rem;
-	border-radius: 10rem;
-	padding: 0.2rem;
-	background-color: rgba(255, 255, 255, 0.452);
+  width: 4.5rem;
+  border-radius: 10rem;
+  padding: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.452);
 }
 
 .rune2 {
-	padding: 0.9rem;
+  padding: 0.9rem;
 }
 
 .matchHistoryDataSetMidStats {
-	display: flex;
-	flex-direction: column;
-	row-gap: 1.5rem;
-	align-items: center;
-	justify-content: center;
-	font-size: 10rem;
-	font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+  font-weight: 800;
 }
 
 .matchHistoryDataSetMidStatsCs {
-	display: flex;
-	column-gap: 2rem;
-	font-weight: 400;
+  display: flex;
+  column-gap: 2rem;
+  font-weight: 400;
 }
 
 .matchHistoryDataSetMidInv {
-	display: flex;
-	flex-direction: row;
-	column-gap: 0.5rem;
-	margin: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+  margin: 1.5rem;
 }
 
 .matchHistoryDataSetMidItems {
-	display: flex;
-	flex-wrap: wrap;
-	height: 12.5rem;
-	row-gap: 0.5rem;
-	column-gap: 0.5rem;
-	width: 19rem;
+  display: flex;
+  flex-wrap: wrap;
+  height: 12.5rem;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  width: 19rem;
 }
 
 .matchHistoryDataSetBotCombos {
-	display: flex;
-	column-gap: 1rem;
-	font-size: 5rem;
-	justify-content: space-around;
-	margin: 2rem;
-	margin-top: 1rem;
-	font-weight: 400;
+  display: flex;
+  column-gap: 1rem;
+  font-size: 5rem;
+  justify-content: space-around;
+  margin: 2rem;
+  margin-top: 1rem;
+  font-weight: 400;
 }
 
 .matchHistoryDataSetBotCombosKills {
-	display: flex;
-	flex-direction: row;
-	column-gap: 1rem;
-	font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+  font-weight: 500;
 }
 
 .matchHistoryDataSetBotCombosKillsType {
-	border-radius: 10rem;
-	background-color: #ffd752;
-	padding: 0.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+  border-radius: 10rem;
+  background-color: #ffd752;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .timeSpentDead {
-	float: right;
+  float: right;
+}
+@media (max-width: 420px) {
+  body {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .matchHistory-data {
+    font-size: -10%;
+    width: 100vw;
+  }
+  .matchHistoryDataSetMid {
+    flex-direction: column;
+  }
+  .summonerInfo {
+    margin-left: 30%;
+    width: 100vw;
+  }
+  img.profile {
+    margin: 1rem;
+    width: 10rem;
+  }
+  .profile {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 1250px) {
+  body {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .matchHistory-data {
+    font-size: -10%;
+    width: 100vw;
+  }
+  .matchHistoryDataSetMid {
+    flex-direction: column;
+  }
+  .summonerInfo {
+    margin-left: 30%;
+    width: 100vw;
+  }
+  img.profile {
+    margin: 1rem;
+    width: 10rem;
+  }
+  .profile {
+    font-size: 3rem;
+  }
 }
